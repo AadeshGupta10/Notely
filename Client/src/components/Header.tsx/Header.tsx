@@ -15,37 +15,6 @@ const Header = () => {
         setMenu(prev => !prev)
     }
 
-    // const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
-
-    // const toggleDarkMode = async () => {
-    //     flushSync(() => {
-    //         setIsDarkMode(prev => !prev);
-    //     });
-    // };
-
-    // useEffect(() => {
-    //     const theme = localStorage.getItem("theme")
-
-    //     if (theme == "true") {
-    //         setIsDarkMode(true)
-    //     }
-    //     else {
-    //         setIsDarkMode(false)
-    //     }
-    // }, [])
-
-    // useEffect(() => {
-    //     // Updating the Redux Store and Local Theme Storage 
-
-    //     localStorage.setItem("theme", JSON.stringify(isDarkMode));
-
-    //     if (isDarkMode) {
-    //         document.documentElement.classList.add('dark');
-    //     } else {
-    //         document.documentElement.classList.remove('dark');
-    //     }
-    // }, [isDarkMode]);
-
     return (
         <>
             <div className={`bg-white-custom dark:bg-dark min-h-[9vh] flex justify-between items-center shadow-md dark:shadow-gray-700 gap-4 ${auth && "flex-wrap relative"} ${menu && "py-3"} sticky top-0`}>

@@ -10,6 +10,7 @@ const useValidate = () => {
     const dispatch = useDispatch()
 
     const token = cookie.load("token");
+    console.log(token)
 
     const { data, isSuccess } = useQuery({
         queryKey: ["Verifying Token"],

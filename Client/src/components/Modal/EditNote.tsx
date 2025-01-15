@@ -1,5 +1,5 @@
 import { Close } from '@mui/icons-material';
-import React, { useEffect, useRef, useState } from 'react'
+import { FC, useEffect, useRef, useState } from 'react'
 import { IconButton, Tooltip } from '@mui/material'
 import { useForm } from 'react-hook-form';
 import { EditNote } from '../../utils/Store/Redux_functions';
@@ -14,7 +14,7 @@ interface prop {
     id: string
 }
 
-const AddNote: React.FC<prop> = ({ id, close, createdAt }) => {
+const AddNote: FC<prop> = ({ id, close, createdAt }) => {
 
     const ref = useRef<any>();
 

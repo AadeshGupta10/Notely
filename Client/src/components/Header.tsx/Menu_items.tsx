@@ -1,4 +1,4 @@
-import {FC, useState } from 'react'
+import { FC, useState } from 'react'
 import cookie from 'react-cookies';
 
 interface props {
@@ -38,7 +38,7 @@ const Menu_items: FC<props> = ({ authenticated }) => {
                                 <img src="linkedin.webp" alt="" />
                                 LinkedIn
                             </a>
-                            <button className='w-full btn btn-danger' onClick={handleLogout}>
+                            <button className='w-full btn btn-danger' onClick={() => handleLogout()}>
                                 Logout
                             </button>
                         </div>
