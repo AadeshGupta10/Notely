@@ -1,5 +1,6 @@
-import {FC, useState } from 'react'
+import { FC, useState } from 'react'
 import cookie from 'react-cookies';
+import { useNavigate } from 'react-router-dom';
 
 interface props {
     authenticated: boolean
@@ -7,7 +8,8 @@ interface props {
 
 const Menu_items: FC<props> = ({ authenticated }) => {
 
-    const [menu, setMenu] = useState(false)
+    const [menu, setMenu] = useState(false);
+    const navigate = useNavigate();
 
     const handleMenu = () => {
         setMenu(prev => !prev)
@@ -15,7 +17,7 @@ const Menu_items: FC<props> = ({ authenticated }) => {
 
     const handleLogout = () => {
         cookie.remove("token");
-        window.location.reload();
+        navigate("/");
     }
 
     return (
