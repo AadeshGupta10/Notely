@@ -26,7 +26,7 @@ const handleUserRegisteration = async (req, res) => {
             .then(async (response) => {
                 const id = Object(response["_id"]).toString()
                 const token = setToken({ ...req.body, "_id": id })
-                res.cookie("token", token);
+                res.cookie("token", token, { httpOnly: true, secure: true });
 
                 try {
                     await transporter.sendMail({
@@ -63,7 +63,7 @@ const handleUserLogin = async (req, res) => {
 
         const token = setToken(user);
 
-        res.cookie("token", token);
+        res.cookie("token", token, { httpOnly: true, secure: true });
         res.status(200).send("Login ");
     } catch {
         res.status(500).send("Signin Failed");
@@ -84,7 +84,7 @@ const handleEmailOtpGeneration = async (req, res) => {
             text: `OTP for Email Verification -: ${email_otp}`, // plain text body
         })
 
-        res.cookie("email_otp", hash_email_otp);
+        res.cookie("email_otp", hash_email_otp, { httpOnly: true, secure: true });
         res.status(200).send(`Email Verification OTP Successfully Sent`);
     } catch {
         res.status(500).send("Error in Sending OTP");
