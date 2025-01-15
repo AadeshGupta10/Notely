@@ -19,7 +19,7 @@ app.use(express.json())
 
 app.use(cors({
     origin: process.env.CLIENT_URL,
-    allowedHeaders: ['Content-Type', 'Cookie', 'Set-Cookie'],
+    allowedHeaders: 'Content-Type',
     credentials: true
 }))
 

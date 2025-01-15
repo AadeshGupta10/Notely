@@ -69,8 +69,7 @@ const handleUserLogin = async (req, res) => {
 
         res.cookie("token", token, {
             httpOnly: true,
-            secure: true,
-            sameSite: 'strict'
+            secure: true
         });
 
         res
@@ -88,24 +87,17 @@ const handleEmailOtpGeneration = async (req, res) => {
     try {
         const receiver_email = req.body.email;
 
+        await transporter.sendMail({
+            from: "aadeshgupta5058@gmail.com", // sender address
+            to: receiver_email, // list of receivers
+            subject: "Notely Email Verification", // Subject line
+            text: `OTP for Email Verification -: ${email_otp}`, // plain text body
+        })
 
         res.cookie("email_otp", hash_email_otp, {
             httpOnly: true,
-            secure: true,
-            sameSite: 'strict'
+            secure: true
         });
-
-        if (!!req.cookies.email_otp) {
-            await transporter.sendMail({
-                from: "aadeshgupta5058@gmail.com", // sender address
-                to: receiver_email, // list of receivers
-                subject: "Notely Email Verification", // Subject line
-                text: `OTP for Email Verification -: ${email_otp}`, // plain text body
-            })
-        }
-        else {
-            return res.status(500).send("Error in Sending Otp, Try Again Later");
-        }
 
         res
             .status(200)
