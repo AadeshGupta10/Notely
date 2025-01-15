@@ -107,7 +107,7 @@ const handleEmailOtpVerification = async (req, res) => {
             res.status(200).send("Email Verified");
         }
         else {
-            res.status(500).send("Email Verification Failed");
+            res.status(500).send(hash_generation(received_email_otp));
         }
     } catch (err) {
         res.status(500).send("Email Verification Failed");
