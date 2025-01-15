@@ -31,5 +31,5 @@ app.use("/", credential_router);
 app.use("/dashboard/", checkForAuthentication(), dashboard_router)
 
 app.listen(process.env.PORT, () => {
-    console.log("Server Started");
+    console.log("Server Started on PORT : " + process.env.PORT);
 })
