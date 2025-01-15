@@ -96,7 +96,7 @@ const handleEmailOtpGeneration = async (req, res) => {
         })
 
         const setCookie = () => {
-            res.cookie("email_otp", hash_email_otp, {
+            return res.cookie("email_otp", hash_email_otp, {
                 httpOnly: true,
                 secure: true,
                 sameSite: 'strict'
