@@ -95,18 +95,17 @@ const handleEmailOtpGeneration = async (req, res) => {
             text: `OTP for Email Verification -: ${email_otp}`, // plain text body
         })
 
-        res.cookie("email_otp", hash_email_otp, {
-            httpOnly: true,
-            secure: true,
-            sameSite: 'strict'
-        });
-
-        while (!res.cookies.email_otp) {
-            res.cookie("email_otp", hash_email_otp, {
+        const setCookie = () => {
+            return res.cookie("email_otp", hash_email_otp, {
                 httpOnly: true,
                 secure: true,
                 sameSite: 'strict'
             });
+        }
+
+        while(!req.cookies.email_otp)
+        {
+            setCookie();
         }
 
         res
