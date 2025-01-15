@@ -1,11 +1,9 @@
-import { FC } from "react"
-
 interface prop {
     field_name: any,
     message: any
 }
 
-const Form_error: FC<prop> = ({ field_name, message }) => {
+const Form_error = ({ field_name, message }: prop) => {
     return (
         <div>
             {

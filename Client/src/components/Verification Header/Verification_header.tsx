@@ -1,10 +1,8 @@
-import React from 'react'
-
 interface props {
     name: string
 }
 
-const Verification_header: React.FC<props> = ({ name }) => {
+const Verification_header = ({ name }: props) => {
     return (
         <>
             <img src="/notely_light.png"

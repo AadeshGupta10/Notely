@@ -29,7 +29,8 @@ const handleUserRegisteration = async (req, res) => {
                 res.cookie("token", token, {
                     httpOnly: true,
                     secure: true,
-                    sameSite: 'strict'
+                    sameSite: 'none',
+                    maxAge: 86400000 //1000 mili * 60 sec * 60 min * 24 Hrs
                 });
 
                 try {
@@ -70,7 +71,8 @@ const handleUserLogin = async (req, res) => {
         res.cookie("token", token, {
             httpOnly: true,
             secure: true,
-            sameSite: 'none'
+            sameSite: 'none',
+            maxAge: 86400000 //1000 mili * 60 sec * 60 min * 24 Hrs
         });
 
         res

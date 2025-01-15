@@ -9,23 +9,24 @@ const useValidate = () => {
 
     const dispatch = useDispatch()
 
-    console.log()
-
     const token = cookie.load("token");
 
-    const { data } = useQuery({
+    const { data, isSuccess } = useQuery({
         queryKey: ["Verifying Token"],
         queryFn: verify_token,
         enabled: !!token
     });
 
     useEffect(() => {
-        data != null &&
+        !!token ?
+            isSuccess &&
             (
                 (data.data["notes"]).length > 0 && dispatch(fetchNotes(data.data)),
                 dispatch(handleAuthentication(true))
             )
-    }, [data])
+            :
+            dispatch(handleAuthentication(false))
+    }, [isSuccess])
 }
 
 export default useValidate;
