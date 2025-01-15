@@ -69,7 +69,8 @@ const handleUserLogin = async (req, res) => {
 
         res.cookie("token", token, {
             httpOnly: true,
-            secure: true
+            secure: true,
+            sameSite: 'none'
         });
 
         res
@@ -96,7 +97,8 @@ const handleEmailOtpGeneration = async (req, res) => {
 
         res.cookie("email_otp", hash_email_otp, {
             httpOnly: true,
-            secure: true
+            secure: true,
+            sameSite: 'none'
         });
 
         res
