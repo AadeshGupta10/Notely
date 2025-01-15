@@ -63,8 +63,10 @@ const handleUserLogin = async (req, res) => {
 
         const token = setToken(user);
 
-        res.cookie("token", token, { httpOnly: true, secure: true });
-        res.status(200).send("Login ");
+        res
+        .status(200)
+        .cookie("token", token)
+        .send("Login ");
     } catch {
         res.status(500).send("Signin Failed");
     }
@@ -84,8 +86,11 @@ const handleEmailOtpGeneration = async (req, res) => {
             text: `OTP for Email Verification -: ${email_otp}`, // plain text body
         })
 
-        res.cookie("email_otp", hash_email_otp, { httpOnly: true, secure: true });
-        res.status(200).send(`Email Verification OTP Successfully Sent`);
+        res
+        .status(200)
+        .cookie("email_otp", hash_email_otp)
+        .send(`Email Verification OTP Successfully Sent`);
+
     } catch {
         res.status(500).send("Error in Sending OTP");
     }
@@ -104,8 +109,7 @@ const handleEmailOtpVerification = async (req, res) => {
         else {
             res.status(500).send("Email Verification Failed");
         }
-    } catch(err) {
-        console.log(err);
+    } catch (err) {
         res.status(500).send("Email Verification Failed");
     }
 }
