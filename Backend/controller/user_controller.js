@@ -104,7 +104,8 @@ const handleEmailOtpVerification = async (req, res) => {
         else {
             res.status(500).send("Email Verification Failed");
         }
-    } catch {
+    } catch(err) {
+        console.log(err);
         res.status(500).send("Email Verification Failed");
     }
 }
