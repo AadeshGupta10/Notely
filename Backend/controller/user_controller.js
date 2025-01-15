@@ -106,9 +106,6 @@ const handleEmailOtpVerification = async (req, res) => {
             res.clearCookie("email_otp");
             res.status(200).send("Email Verified");
         }
-        else {
-            res.status(500).send("Email Verification Failed");
-        }
     } catch (err) {
         res.status(500).send(err);
     }
