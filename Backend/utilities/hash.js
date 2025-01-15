@@ -6,7 +6,7 @@ const hash_generation = (item) => {
 }
 
 const hash_verification = (current, old_hash) => {
-    return (hash_generation(current)).toString() === (old_hash).toString();
+    return hash_generation(current) === (old_hash).toString();
 }
 
 module.exports = {
