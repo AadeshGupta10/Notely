@@ -124,7 +124,7 @@ const handleEmailOtpVerification = async (req, res) => {
             res.status(500).send({
                 "received otp Hash": hash_generation(received_email_otp),
                 "Comparison": hash_verification(received_email_otp, email_otp_hash),
-                "email otp": email_otp_hash,
+                "email otp": req.cookies,
                 "email otp type": typeof (email_otp_hash),
                 "received otp hash type": typeof (hash_generation(received_email_otp))
             });
