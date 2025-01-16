@@ -30,6 +30,7 @@ const handleUserRegisteration = async (req, res) => {
                 res.cookie("token", token, {
                     httpOnly: true,
                     secure: true,
+                    path: "/dashboard",
                     sameSite: 'none',
                     maxAge: 1000 * 60 * 60 * 24
                 });
@@ -72,6 +73,7 @@ const handleUserLogin = async (req, res) => {
         res.cookie("token", token, {
             httpOnly: true,
             secure: true,
+            path: "/dashboard",
             sameSite: 'none',
             maxAge: 1000 * 60 * 60 * 24
         });
@@ -101,6 +103,7 @@ const handleEmailOtpGeneration = async (req, res) => {
         res.cookie("email_otp", hash_email_otp, {
             httpOnly: true,
             secure: true,
+            path: "/",
             sameSite: 'none'
         });
 
