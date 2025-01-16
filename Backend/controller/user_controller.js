@@ -27,28 +27,23 @@ const handleUserRegisteration = async (req, res) => {
                 const id = Object(response["_id"]).toString()
                 const token = setToken({ ...req.body, "_id": id })
 
-                res.cookie("token", token, {
-                    httpOnly: true,
-                    secure: true,
-                    path: "/",
-                    sameSite: 'None'
-                });
+                localStorage.setItem("token", token);
 
-        try {
-            await transporter.sendMail({
-                from: "aadeshgupta5058@gmail.com", // sender address
-                to: req.body.email, // receivers address
-                subject: `Welcome ${req.body.name} to Notely.`, // Subject line
-                text: `Your Account with Notely is created Successfully.\n\nYou can now enjoy Creating, Editing, Pinning and Searching your Notes seamlessly with Notely.`, // plain text body
+                try {
+                    await transporter.sendMail({
+                        from: "aadeshgupta5058@gmail.com", // sender address
+                        to: req.body.email, // receivers address
+                        subject: `Welcome ${req.body.name} to Notely.`, // Subject line
+                        text: `Your Account with Notely is created Successfully.\n\nYou can now enjoy Creating, Editing, Pinning and Searching your Notes seamlessly with Notely.`, // plain text body
+                    })
+                } catch {
+                    return res.status(500).send("Email Not Send");
+                }
             })
-        } catch {
-            return res.status(500).send("Email Not Send");
-        }
-    })
-    res.status(201).send("User Account Created Successfully");
-} catch {
-    res.status(500).send("User Account Creation Failed");
-}
+        res.status(201).send("User Account Created Successfully");
+    } catch {
+        res.status(500).send("User Account Creation Failed");
+    }
 }
 
 const handleUserLogin = async (req, res) => {
@@ -69,12 +64,7 @@ const handleUserLogin = async (req, res) => {
 
         const token = setToken(user);
 
-        res.cookie("token", token, {
-            httpOnly: true,
-            secure: true,
-            path: "/",
-            sameSite: 'None'
-        });
+        localStorage.setItem("token", token);
 
         res
             .status(200)

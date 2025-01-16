@@ -1,5 +1,4 @@
 import { FC, useState } from 'react'
-import cookie from 'react-cookies';
 
 interface props {
     authenticated: boolean
@@ -14,7 +13,7 @@ const Menu_items: FC<props> = ({ authenticated }) => {
     }
 
     const handleLogout = () => {
-        cookie.remove("token");
+        localStorage.removeItem("token");
         window.location.reload();
     }
 

@@ -3,13 +3,12 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { fetchNotes, handleAuthentication } from "../utils/Store/Redux_functions";
 import { verify_token } from "../Services/API/api";
-import cookie from 'react-cookies';
 
 const useValidate = () => {
 
     const dispatch = useDispatch()
 
-    const token = cookie.load("token");
+    const token = localStorage.getItem("token");
 
     const { data, isSuccess } = useQuery({
         queryKey: ["Verifying Token"],
@@ -19,8 +18,7 @@ const useValidate = () => {
 
     useEffect(() => {
 
-        console.log(cookie.load("token"));
-        console.log(cookie.loadAll());
+        console.log(token);
 
         if (isSuccess && data && !!token) {
             (data.data["notes"]).length > 0 && dispatch(fetchNotes(data.data)),
