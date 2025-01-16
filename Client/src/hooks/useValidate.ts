@@ -19,6 +19,9 @@ const useValidate = () => {
 
     useEffect(() => {
 
+        console.log(cookie.load("token"));
+        console.log(cookie.loadAll());
+
         if (isSuccess && data && !!token) {
             (data.data["notes"]).length > 0 && dispatch(fetchNotes(data.data)),
                 dispatch(handleAuthentication(true))

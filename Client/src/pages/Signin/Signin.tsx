@@ -22,6 +22,7 @@ const Signin = () => {
         onSuccess: () => {
             console.log("Sign-in successful");
             navigate("/dashboard");
+            console.log("Navigation Done");
         }
     })
 
