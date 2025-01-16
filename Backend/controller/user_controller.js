@@ -32,24 +32,25 @@ const handleUserRegisteration = async (req, res) => {
                     secure: true,
                     path: "/",
                     sameSite: 'none',
-                    maxAge: 1000 * 60 * 60 * 24
+                    maxAge: 1000 * 60 * 60 * 24,
+                    domain: '.vercel.app',
                 });
 
-                try {
-                    await transporter.sendMail({
-                        from: "aadeshgupta5058@gmail.com", // sender address
-                        to: req.body.email, // receivers address
-                        subject: `Welcome ${req.body.name} to Notely.`, // Subject line
-                        text: `Your Account with Notely is created Successfully.\n\nYou can now enjoy Creating, Editing, Pinning and Searching your Notes seamlessly with Notely.`, // plain text body
-                    })
-                } catch {
-                    return res.status(500).send("Email Not Send");
-                }
+        try {
+            await transporter.sendMail({
+                from: "aadeshgupta5058@gmail.com", // sender address
+                to: req.body.email, // receivers address
+                subject: `Welcome ${req.body.name} to Notely.`, // Subject line
+                text: `Your Account with Notely is created Successfully.\n\nYou can now enjoy Creating, Editing, Pinning and Searching your Notes seamlessly with Notely.`, // plain text body
             })
-        res.status(201).send("User Account Created Successfully");
-    } catch {
-        res.status(500).send("User Account Creation Failed");
-    }
+        } catch {
+            return res.status(500).send("Email Not Send");
+        }
+    })
+    res.status(201).send("User Account Created Successfully");
+} catch {
+    res.status(500).send("User Account Creation Failed");
+}
 }
 
 const handleUserLogin = async (req, res) => {
@@ -75,7 +76,8 @@ const handleUserLogin = async (req, res) => {
             secure: true,
             path: "/",
             sameSite: 'none',
-            maxAge: 1000 * 60 * 60 * 24
+            maxAge: 1000 * 60 * 60 * 24,
+            domain: '.vercel.app',
         });
 
         res
@@ -103,8 +105,9 @@ const handleEmailOtpGeneration = async (req, res) => {
         res.cookie("email_otp", hash_email_otp, {
             httpOnly: true,
             secure: true,
-            path:"/",
-            sameSite: 'none'
+            path: "/",
+            sameSite: 'none',
+            domain: '.vercel.app',
         });
 
         res
