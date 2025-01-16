@@ -69,7 +69,7 @@ const handleUserLogin = async (req, res) => {
 
         const token = setToken(user);
 
-        res.cookie("token", "set", {
+        res.cookie("token", token, {
             httpOnly: true,
             secure: true,
             sameSite: 'none',
@@ -124,16 +124,10 @@ const handleEmailOtpVerification = async (req, res) => {
             res.status(200).send("Email Verified");
         }
         else {
-            res.status(500).send({
-                "received otp Hash": hash_generation(received_email_otp),
-                "Comparison": hash_verification(received_email_otp, email_otp_hash),
-                "email otp": req.cookies,
-                "email otp type": typeof (email_otp_hash),
-                "received otp hash type": typeof (hash_generation(received_email_otp))
-            });
+            res.status(400).send("Invalid OTP");
         }
     } catch (err) {
-        res.status(500).send("Email Verification Failed");
+        res.status(400).send("Email Verification Failed");
     }
 }
 
