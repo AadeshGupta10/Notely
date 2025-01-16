@@ -19,8 +19,8 @@ const Signin = () => {
     const { mutate, isPending, isError, } = useMutation({
         mutationKey: ["Sign In"],
         mutationFn: signin,
-        onSuccess: (data) => {
-            console.log(data);
+        onSuccess: (response) => {
+            localStorage.setItem("token", response.data.token);
             navigate("/dashboard");
         }
     })

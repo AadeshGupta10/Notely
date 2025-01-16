@@ -22,7 +22,8 @@ const Signup = () => {
     const { mutate, isPending } = useMutation({
         mutationKey: ["Sign Up Data"],
         mutationFn: signup,
-        onSuccess: () => {
+        onSuccess: (response) => {
+            localStorage.setItem("token", response.data.token);
             navigate("/dashboard");
         }
     })
