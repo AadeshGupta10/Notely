@@ -107,7 +107,6 @@ const handleEmailOtpGeneration = async (req, res) => {
             secure: true,
             path: "/",
             sameSite: 'none',
-            domain: '.vercel.app',
         });
 
         res
