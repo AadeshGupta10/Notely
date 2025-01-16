@@ -45,7 +45,7 @@ const handleUserRegisteration = async (req, res) => {
                     return res.status(500).send("Email Not Send");
                 }
             })
-        res.status(201).send("User Account Created Successfully");
+        res.status(201).send({ "message": "User Account Created Successfully", "token": token });
     } catch {
         res.status(500).send("User Account Creation Failed");
     }
@@ -78,7 +78,7 @@ const handleUserLogin = async (req, res) => {
 
         res
             .status(200)
-            .send("Login Successfull");
+            .send({ "message": "Login Successfull", "token": token });
     } catch {
         res.status(500).send("Signin Failed");
     }
