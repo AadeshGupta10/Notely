@@ -41,13 +41,15 @@ const handleUserRegisteration = async (req, res) => {
                         subject: `Welcome ${req.body.name} to Notely.`, // Subject line
                         text: `Your Account with Notely is created Successfully.\n\nYou can now enjoy Creating, Editing, Pinning and Searching your Notes seamlessly with Notely.`, // plain text body
                     })
+
+                    return res.status(201).send({ "message": "User Account Created Successfully", "token": token });
+
                 } catch {
                     return res.status(500).send("Email Not Send");
                 }
             })
-        res.status(201).send({ "message": "User Account Created Successfully", "token": token });
-    } catch(err) {
-        res.status(500).send("User Account Creation Failed with error "+err);
+    } catch (err) {
+        res.status(500).send("User Account Creation Failed with error " + err);
     }
 }
 
