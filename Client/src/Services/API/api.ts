@@ -132,7 +132,14 @@ const pin_unpin_note = async (e: any) => {
 }
 
 const verify_token = async () => {
-    return axios_instance.get("/dashboard/verify_token")
+    return await toast.promise(
+        axios_instance.get("/dashboard/verify_token"),
+        {
+            pending: "Checking your Authenticity... Please wait",
+            success: "Sorry we doubt you. Forgive us.",
+            error: "Sorry, Your are not Authenticated. Please Login Again."
+        }
+    )
 }
 
 export {

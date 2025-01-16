@@ -10,7 +10,6 @@ interface data_schema {
 
 const initialState = {
     authentication: false,
-    loading: false,
     data: <data_schema[]>[],
     pinnedArr: <Array<string>>[]
 }
@@ -19,9 +18,6 @@ const Redux_functions = createSlice({
     name: "Redux_functions",
     initialState,
     reducers: {
-        handleLoading: (state, action) => {
-            state.loading = action.payload;
-        },
         handleAuthentication: (state, action) => {
             state.authentication = action.payload
         },
@@ -78,7 +74,7 @@ const Redux_functions = createSlice({
         },
         UnPinNote: (state, action) => {
             const createdAt = action.payload;
-
+            
             state.pinnedArr = state.pinnedArr.filter((pinDateTime) => (
                 pinDateTime != createdAt
             ));
@@ -102,6 +98,6 @@ const Redux_functions = createSlice({
     }
 })
 
-export const { handleLoading, handleAuthentication, fetchNotes, CreateNote, EditNote, DeleteNote, PinNote, UnPinNote } = Redux_functions.actions;
+export const { handleAuthentication, fetchNotes, CreateNote, EditNote, DeleteNote, PinNote, UnPinNote } = Redux_functions.actions;
 
 export default Redux_functions.reducer;

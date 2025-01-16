@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { fetchNotes, handleAuthentication, handleLoading } from "../utils/Store/Redux_functions";
+import { fetchNotes, handleAuthentication } from "../utils/Store/Redux_functions";
 import { verify_token } from "../Services/API/api";
 
 const useValidate = () => {
@@ -10,15 +10,11 @@ const useValidate = () => {
 
     const token = localStorage.getItem("token");
 
-    const { data, isSuccess, isPending } = useQuery({
+    const { data, isSuccess } = useQuery({
         queryKey: ["Verifying Token"],
         queryFn: verify_token,
         enabled: !!token
     });
-
-    useEffect(() => {
-        dispatch(handleLoading(isPending))
-    }, [isPending])
 
     useEffect(() => {
 
