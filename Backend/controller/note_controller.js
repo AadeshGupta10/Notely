@@ -80,8 +80,10 @@ const handlePinUnpinNote = async (req, res) => {
 
         const { id, pin, createdAt } = req.body;
 
+        var pinned, unpinned;
+
         pin ?
-            await userModel.findByIdAndUpdate(_id, {
+            pinned = await userModel.findByIdAndUpdate(_id, {
                 $push: {
                     pin_order: {
                         $each: [createdAt],
@@ -90,14 +92,14 @@ const handlePinUnpinNote = async (req, res) => {
                 }
             })
             :
-            await userModel.findByIdAndUpdate(_id, {
+            unpinned = await userModel.findByIdAndUpdate(_id, {
                 $pull: {
                     pin_order: createdAt
                 }
             })
 
         await noteModel.findByIdAndUpdate(id, { "pin": pin })
-        res.status(200).send(`Note with id: ${req.body._id} is ${pin ? "Pinned" : "Unpinned"}`);
+        res.status(200).send(`Note with id: ${req.body.id} is ${pin ? "Pinned" : "Unpinned"} and Pinned: ${pinned} Unpinned:${unpinned}`);
     }
     catch {
         res.status(500).send("Error in Pinning and Unpining Note.");

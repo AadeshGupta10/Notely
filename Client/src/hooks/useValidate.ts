@@ -10,11 +10,15 @@ const useValidate = () => {
 
     const token = localStorage.getItem("token");
 
-    const { data, isSuccess } = useQuery({
+    const { data, isSuccess, isError } = useQuery({
         queryKey: ["Verifying Token"],
         queryFn: verify_token,
         enabled: !!token
     });
+
+    useEffect(() => {
+        dispatch(handleAuthentication(false));
+    }, [isError])
 
     useEffect(() => {
 
