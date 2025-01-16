@@ -211,8 +211,8 @@ const handleTokenVerification = async (req, res) => {
         const notes = await noteModel.find({ createdBy: _id }, { __v: 0 }).sort({ createdAt: -1 });
 
         res.status(200).send({ "notes": notes, "pin_array": pin_array.pin_order })
-    } catch {
-        res.status(500).send("Error in Finding Notes" + JSON.stringify(req.user))
+    } catch (err) {
+        res.status(500).send("Error in Finding Notes " + " Error :- " + err)
     }
 }
 

@@ -18,13 +18,12 @@ const useValidate = () => {
 
     useEffect(() => {
 
-        console.log(token);
-
         if (isSuccess && !!token) {
+            console.log(token, " " + isSuccess);
             (data.data["notes"]).length > 0 && dispatch(fetchNotes(data.data)),
                 dispatch(handleAuthentication(true))
         }
-    }, [isSuccess, token])
+    }, [isSuccess, data, token])
 }
 
 export default useValidate;
