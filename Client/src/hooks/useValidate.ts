@@ -8,23 +8,18 @@ const useValidate = () => {
 
     const dispatch = useDispatch()
 
-    const token = localStorage.getItem("token");
-
     const { data, isSuccess } = useQuery({
         queryKey: ["Verifying Token"],
         queryFn: verify_token,
-        enabled: !!token
     });
 
     useEffect(() => {
 
-        console.log(token);
-
-        if (isSuccess && data && !!token) {
+        if (isSuccess && data) {
             (data.data["notes"]).length > 0 && dispatch(fetchNotes(data.data)),
                 dispatch(handleAuthentication(true))
         }
-    }, [isSuccess, token])
+    }, [isSuccess, data])
 }
 
 export default useValidate;
