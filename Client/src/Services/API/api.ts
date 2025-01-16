@@ -4,9 +4,7 @@ import axios_instance from "../../utils/Axios Instance/axios_instance";
 const signup = async (e: any) => {
 
     return await toast.promise(
-        axios_instance.post("/signup", e, {
-            withCredentials: true
-        }),
+        axios_instance.post("/signup", e),
         {
             pending: 'Creating Account... Please Wait',
             success: `Welcome ${e.name} to Your Notely World`,
@@ -18,9 +16,7 @@ const signup = async (e: any) => {
 const signin = async (e: any) => {
 
     return await toast.promise(
-        axios_instance.post("/signin", e, {
-            withCredentials: true
-        }),
+        axios_instance.post("/signin", e),
         {
             pending: 'Verifying Credentials',
             success: `Welcome Back Buddy`,
@@ -32,9 +28,7 @@ const signin = async (e: any) => {
 const email_otp = async (e: any) => {
 
     return await toast.promise(
-        axios_instance.post("/email_otp", e, {
-            withCredentials: true
-        }),
+        axios_instance.post("/email_otp", e),
         {
             pending: `Sending OTP on ${e.email}`,
             success: `OTP is Sent on ${e.email}`,
@@ -46,9 +40,7 @@ const email_otp = async (e: any) => {
 const email_otp_verification = async (e: object) => {
 
     return await toast.promise(
-        axios_instance.post("/email_otp_verification", e, {
-            withCredentials: true
-        }),
+        axios_instance.post("/email_otp_verification", e),
         {
             pending: 'Verifying OTP',
             success: 'OTP Verified Successfully',
@@ -59,9 +51,7 @@ const email_otp_verification = async (e: object) => {
 
 const check_email = async (e: any) => {
     return await toast.promise(
-        axios_instance.post("/check_email", e, {
-            withCredentials: true
-        }),
+        axios_instance.post("/check_email", e),
         {
             pending: `Checking Email.... Please Wait`,
             error: "Email Invalid"
@@ -71,9 +61,7 @@ const check_email = async (e: any) => {
 
 const check_email_duplicacy = async (e: any) => {
     return await toast.promise(
-        axios_instance.post("/check_email_duplicacy", e, {
-            withCredentials: true
-        }),
+        axios_instance.post("/check_email_duplicacy", e),
         {
             pending: `Checking Email.... Please Wait`,
             error: "Email Already Registered"
@@ -84,9 +72,7 @@ const check_email_duplicacy = async (e: any) => {
 const create_new_password = async (e: object) => {
 
     return await toast.promise(
-        axios_instance.post("/create_new_password", e, {
-            withCredentials: true
-        }),
+        axios_instance.post("/create_new_password", e),
         {
             pending: 'Resetting Password.. Please Wait.',
             success: 'Password Reset Successfully',
@@ -98,9 +84,7 @@ const create_new_password = async (e: object) => {
 const add_note = async (e: object) => {
 
     return await toast.promise(
-        axios_instance.post("/dashboard/add_note", e, {
-            withCredentials: true
-        }),
+        axios_instance.post("/dashboard/add_note", e),
         {
             pending: 'Adding Note... Please Wait',
             success: 'Note Added Successfully',
@@ -112,9 +96,7 @@ const add_note = async (e: object) => {
 const edit_note = async (e: object) => {
 
     return await toast.promise(
-        axios_instance.post("/dashboard/edit_note", e, {
-            withCredentials: true
-        }),
+        axios_instance.post("/dashboard/edit_note", e),
         {
             pending: 'Editing Note... Please Wait',
             success: 'Note Edited Successfully',
@@ -126,9 +108,7 @@ const edit_note = async (e: object) => {
 const delete_note = async (e: object) => {
 
     return await toast.promise(
-        axios_instance.post("/dashboard/delete_note", e, {
-            withCredentials: true
-        }),
+        axios_instance.post("/dashboard/delete_note", e),
         {
             pending: 'Deleting Note... Please Wait',
             success: 'Note Deleted Successfully',
@@ -142,9 +122,7 @@ const pin_unpin_note = async (e: any) => {
     const status = e.pin ? "Pinned" : "Unpinned";
 
     return await toast.promise(
-        axios_instance.post("/dashboard/pin_unpin_note", e, {
-            withCredentials: true
-        }),
+        axios_instance.post("/dashboard/pin_unpin_note", e),
         {
             pending: `${status} Requested Note`,
             success: `Note ${status} Successfully`,
@@ -154,9 +132,7 @@ const pin_unpin_note = async (e: any) => {
 }
 
 const verify_token = async () => {
-    return axios_instance.get("/dashboard/verify_token", {
-        withCredentials: true
-    })
+    return axios_instance.get("/dashboard/verify_token")
 }
 
 export {
