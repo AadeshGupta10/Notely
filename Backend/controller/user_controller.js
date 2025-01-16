@@ -34,21 +34,21 @@ const handleUserRegisteration = async (req, res) => {
                     sameSite: 'None'
                 });
 
-        try {
-            await transporter.sendMail({
-                from: "aadeshgupta5058@gmail.com", // sender address
-                to: req.body.email, // receivers address
-                subject: `Welcome ${req.body.name} to Notely.`, // Subject line
-                text: `Your Account with Notely is created Successfully.\n\nYou can now enjoy Creating, Editing, Pinning and Searching your Notes seamlessly with Notely.`, // plain text body
+                try {
+                    await transporter.sendMail({
+                        from: "aadeshgupta5058@gmail.com", // sender address
+                        to: req.body.email, // receivers address
+                        subject: `Welcome ${req.body.name} to Notely.`, // Subject line
+                        text: `Your Account with Notely is created Successfully.\n\nYou can now enjoy Creating, Editing, Pinning and Searching your Notes seamlessly with Notely.`, // plain text body
+                    })
+                } catch {
+                    return res.status(500).send("Email Not Send");
+                }
             })
-        } catch {
-            return res.status(500).send("Email Not Send");
-        }
-    })
-    res.status(201).send("User Account Created Successfully");
-} catch {
-    res.status(500).send("User Account Creation Failed");
-}
+        res.status(201).send("User Account Created Successfully");
+    } catch {
+        res.status(500).send("User Account Creation Failed");
+    }
 }
 
 const handleUserLogin = async (req, res) => {
@@ -212,7 +212,7 @@ const handleTokenVerification = async (req, res) => {
 
         res.status(200).send({ "notes": notes, "pin_array": pin_array.pin_order })
     } catch {
-        res.status(500).send("Error in Finding Notes")
+        res.status(500).send("Error in Finding Notes" + req.user)
     }
 }
 
