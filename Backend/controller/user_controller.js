@@ -26,6 +26,7 @@ const handleUserRegisteration = async (req, res) => {
             .then(async (response) => {
                 const id = Object(response["_id"]).toString()
                 const token = setToken({ ...req.body, "_id": id })
+                
                 res.cookie("token", token, {
                     httpOnly: true,
                     secure: true,

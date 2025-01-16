@@ -1,14 +1,12 @@
 import { useMutation } from '@tanstack/react-query'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { signin } from '../../Services/API/api'
 import Spinner from '../../components/Spinner/Spinner'
 import Verification_header from '../../components/Verification Header/Verification_header'
 import { Eye, EyeOff, LockKeyhole, Mail } from 'lucide-react'
 import Form_error from '../../components/Error/Form_error'
-import { useDispatch } from 'react-redux'
-import { handleAuthentication } from '../../utils/Store/Redux_functions'
 
 const Signin = () => {
 
@@ -16,13 +14,13 @@ const Signin = () => {
 
     const { register, handleSubmit, formState: { errors } } = useForm()
 
-    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const { mutate, isPending, isError, } = useMutation({
         mutationKey: ["Sign In"],
         mutationFn: signin,
         onSuccess: () => {
-            dispatch(handleAuthentication(true))
+            navigate("/dashboard");
         }
     })
 

@@ -21,11 +21,9 @@ const useValidate = () => {
     useEffect(() => {
 
         if (isSuccess && data && !!token) {
-            (data.data["notes"]).length > 0 && dispatch(fetchNotes(data.data))
+            (data.data["notes"]).length > 0 && dispatch(fetchNotes(data.data)),
+                dispatch(handleAuthentication(true))
         }
-
-        !token && dispatch(handleAuthentication(false));
-
     }, [isSuccess, token])
 }
 

@@ -1,15 +1,13 @@
 import { useMutation } from '@tanstack/react-query'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Spinner from '../../components/Spinner/Spinner'
 import Verification_header from '../../components/Verification Header/Verification_header'
 import { check_email_duplicacy, signup } from '../../Services/API/api'
 import { Eye, EyeOff, LockKeyhole, Mail, UserRound } from 'lucide-react'
 import Form_error from '../../components/Error/Form_error'
 import Email_verification from '../../components/Email Verification/Email_verification'
-import { handleAuthentication } from '../../utils/Store/Redux_functions'
-import { useDispatch } from 'react-redux'
 
 const Signup = () => {
 
@@ -17,22 +15,22 @@ const Signup = () => {
 
     const [openVerification, setOpenVerification] = useState(false);
 
-    const { register, handleSubmit, watch, getValues, formState: { errors } } = useForm()
+    const navigate = useNavigate();
 
-    const dispatch = useDispatch()
+    const { register, handleSubmit, watch, getValues, formState: { errors } } = useForm()
 
     const { mutate, isPending } = useMutation({
         mutationKey: ["Sign Up Data"],
         mutationFn: signup,
         onSuccess: () => {
-            dispatch(handleAuthentication(true))
+            navigate("/dashboard");
         }
     })
 
     const { mutate: checking_email_duplicacy_mutate } = useMutation({
         mutationKey: ["Checking Email Duplicacy"],
         mutationFn: check_email_duplicacy,
-        onSuccess:()=>{
+        onSuccess: () => {
             setOpenVerification(!openVerification)
         }
     })
