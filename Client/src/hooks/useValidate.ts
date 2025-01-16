@@ -20,6 +20,7 @@ const useValidate = () => {
     useEffect(() => {
 
         console.log(token);
+        console.log(cookie.loadAll());
 
         if (isSuccess && data && !!token) {
             (data.data["notes"]).length > 0 && dispatch(fetchNotes(data.data)),
