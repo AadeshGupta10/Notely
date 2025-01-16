@@ -31,9 +31,7 @@ const handleUserRegisteration = async (req, res) => {
                     httpOnly: true,
                     secure: true,
                     path: "/",
-                    sameSite: 'none',
-                    maxAge: 1000 * 60 * 60 * 24,
-                    domain: '.vercel.app',
+                    sameSite: 'None'
                 });
 
         try {
@@ -75,9 +73,7 @@ const handleUserLogin = async (req, res) => {
             httpOnly: true,
             secure: true,
             path: "/",
-            sameSite: 'none',
-            maxAge: 1000 * 60 * 60 * 24,
-            domain: '.vercel.app',
+            sameSite: 'None'
         });
 
         res
@@ -106,7 +102,7 @@ const handleEmailOtpGeneration = async (req, res) => {
             httpOnly: true,
             secure: true,
             path: "/",
-            sameSite: 'none',
+            sameSite: 'None',
         });
 
         res
