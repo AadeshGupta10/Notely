@@ -10,7 +10,6 @@ const useValidate = () => {
     const dispatch = useDispatch()
 
     const token = cookie.load("token");
-    console.log(token)
 
     const { data, isSuccess } = useQuery({
         queryKey: ["Verifying Token"],
@@ -19,6 +18,8 @@ const useValidate = () => {
     });
 
     useEffect(() => {
+
+        console.log(token);
 
         if (isSuccess && data && !!token) {
             (data.data["notes"]).length > 0 && dispatch(fetchNotes(data.data)),
