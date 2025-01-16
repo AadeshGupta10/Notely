@@ -6,10 +6,10 @@ import { useSelector } from 'react-redux'
 const Basic_protection: React.FC = () => {
     useValidate()
 
-    const user = useSelector((state:any)=>state.authentication)
-    
+    const user = useSelector((state: any) => state.authentication);
+
     return (
-        user ? <Navigate to={"/dashboard"} /> : <Outlet />
+         user ? <Navigate to={"/dashboard"} /> : <Outlet />
     )
 }
 

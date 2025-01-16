@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { fetchNotes, handleAuthentication } from "../utils/Store/Redux_functions";
+import { fetchNotes, handleAuthentication, handleLoading } from "../utils/Store/Redux_functions";
 import { verify_token } from "../Services/API/api";
 
 const useValidate = () => {
@@ -17,6 +17,10 @@ const useValidate = () => {
     });
 
     useEffect(() => {
+        dispatch(handleLoading(isPending))
+    }, [isPending])
+
+    useEffect(() => {
 
         if (isSuccess && !!token) {
             console.log("Data Fetched")
@@ -25,10 +29,6 @@ const useValidate = () => {
                 dispatch(handleAuthentication(true))
         }
     }, [isSuccess, data, token])
-
-    useEffect(() => {
-        console.log("Pending...... Please Wait");
-    }, [isPending])
 }
 
 export default useValidate;
