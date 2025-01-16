@@ -2,7 +2,7 @@ const { verifyToken } = require("../services/authentication");
 
 function checkForAuthentication() {
     return (req, res, next) => {
-        const tokenCookie = localStorage.getItem("token");
+        const tokenCookie = req.cookies.token;
 
         if (tokenCookie == null) {
             return res.status(401).send("Token Not Available");
