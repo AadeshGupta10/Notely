@@ -46,8 +46,8 @@ const handleUserRegisteration = async (req, res) => {
                 }
             })
         res.status(201).send({ "message": "User Account Created Successfully", "token": token });
-    } catch {
-        res.status(500).send("User Account Creation Failed");
+    } catch(err) {
+        res.status(500).send("User Account Creation Failed with error "+err);
     }
 }
 
