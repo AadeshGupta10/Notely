@@ -209,15 +209,13 @@ const handleTokenVerification = async (req, res) => {
 
         const note_count = await noteModel.find({ createdBy: _id }).countDocuments();
 
-        if(note_count > 0)
-        {
+        if (note_count > 0) {
             const pin_array = await userModel.findById(_id, { _id: 0, pin_order: 1 });
             const notes = await noteModel.find({ createdBy: _id }, { __v: 0 }).sort({ createdAt: -1 });
-    
-            res.status(200).send({ "notes": notes, "pin_array": pin_array })
+
+            res.status(200).send({ "notes": notes, "pin_array": pin_array.pin_order == null ? [] : pin_array.pin_order })
         }
-        else
-        {
+        else {
             res.status(200).send("no Note are Available")
         }
 
