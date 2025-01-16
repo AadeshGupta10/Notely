@@ -19,9 +19,9 @@ const useValidate = () => {
     useEffect(() => {
 
         if (isSuccess && !!token) {
-            console.log(data);
-            console.log(data.data?.notes ? "true" : "false");
-            (data.data["notes"]).length > 0 && dispatch(fetchNotes(data.data)),
+
+            const notes = data.data.notes;
+            (!!notes && notes.length > 0 && dispatch(fetchNotes(data.data))),
                 dispatch(handleAuthentication(true))
         }
     }, [isSuccess, data, token])
