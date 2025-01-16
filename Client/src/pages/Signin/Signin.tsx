@@ -20,6 +20,7 @@ const Signin = () => {
         mutationKey: ["Sign In"],
         mutationFn: signin,
         onSuccess: () => {
+            console.log("Sign-in successful");
             navigate("/dashboard");
         }
     })

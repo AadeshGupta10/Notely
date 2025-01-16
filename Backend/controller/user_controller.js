@@ -80,7 +80,7 @@ const handleUserLogin = async (req, res) => {
 
         res
             .status(200)
-            .send("Login ");
+            .send("Login Successfull");
     } catch {
         res.status(500).send("Signin Failed");
     }
