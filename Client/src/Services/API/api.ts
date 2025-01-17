@@ -135,8 +135,7 @@ const verify_token = async () => {
     return await toast.promise(
         axios_instance.get("/dashboard/verify_token"),
         {
-            pending: "Checking your Authenticity... Please wait",
-            error: "Sorry, Your are not Authenticated. Please Login Again."
+            error: "Sorry, there is an error in finding your notes. Please Login Again."
         }
     )
 }

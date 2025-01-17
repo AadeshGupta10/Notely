@@ -1,5 +1,5 @@
 interface props {
-    name: string
+    name?: string
 }
 
 const Verification_header = ({ name }: props) => {
