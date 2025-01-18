@@ -11,6 +11,7 @@ import Dashboard_outlet from "../components/Outlet/Dashboard_outlet";
 import Basic_protection from "../Protection/Basic Protection/Basic_protection";
 import Work_protection from "../Protection/Work Protection/Work_protection";
 import Global_outlet from "../components/Outlet/Global_outlet";
+import MissingRoute from "../components/MissingRoute";
 
 const routing =
     <Route element={<Global_outlet />}>
@@ -28,7 +29,7 @@ const routing =
             </Route>
         </Route>
 
-        <Route path="*" element={<h3>Invalid: Check URL</h3>} />
+        <Route path="*" element={<MissingRoute />} />
     </Route>
 
 export default routing;
