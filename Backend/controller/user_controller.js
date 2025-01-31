@@ -2,7 +2,7 @@ require("dotenv").config();
 
 const { userModel } = require("../model/user_model");
 const { createHmac } = require("crypto");
-const { setToken, verifyToken } = require("../services/authentication");
+const { setToken } = require("../services/authentication");
 const { hash_generation, hash_verification } = require("../utilities/hash");
 const { generateOTP } = require("../utilities/otp_generation");
 const nodemailer = require("nodemailer");
@@ -25,7 +25,7 @@ const handleUserRegisteration = async (req, res) => {
         await userModel.create(req.body)
             .then(async (response) => {
                 const id = Object(response["_id"]).toString()
-                const token = setToken({ ...req.body, "_id": id })
+                const token = setToken({ ...req.body, "_id": id }) //Sending Id to the Token Generation
 
                 res.cookie("token", token, {
                     httpOnly: true,

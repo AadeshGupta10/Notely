@@ -1,10 +1,10 @@
-import { FC, useState } from 'react'
+import { useState } from 'react'
 
 interface props {
     authenticated: boolean
 }
 
-const Menu_items: FC<props> = ({ authenticated }) => {
+const Menu_items = ({ authenticated }:props) => {
 
     const [menu, setMenu] = useState(false)
 

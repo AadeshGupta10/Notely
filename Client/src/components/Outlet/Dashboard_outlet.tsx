@@ -2,7 +2,6 @@ import { Outlet } from 'react-router-dom'
 import Header from '../Header.tsx/Header'
 
 const Dashboard_outlet = () => {
-    console.log("Dashboard is Available")
     return (
         <div className='h-screen'>
             <Header />

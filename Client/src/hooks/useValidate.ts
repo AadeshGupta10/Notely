@@ -13,7 +13,8 @@ const useValidate = () => {
     const { data, isSuccess, isError, isLoading } = useQuery({
         queryKey: ["Verifying Token"],
         queryFn: verify_token,
-        enabled: !!token
+        enabled: !!token,
+        retry: false
     });
 
     useEffect(() => {
