@@ -9,7 +9,7 @@ const { checkForAuthentication } = require("./middleware/authentication");
 
 const app = express();
 
-connection(process.env.DATABASE)
+connection(process.env.MONGODB_URI)
     .then(() => console.log("Database Connected Successfully"))
     .catch((err) => console.log("Database Connection Failed With Error:- " + err))
 
