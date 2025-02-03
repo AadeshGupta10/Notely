@@ -22,7 +22,7 @@ const Signin = () => {
         onSuccess: (response) => {
             localStorage.setItem("token", response.data.token);
             navigate("/dashboard");
-        }
+        },
     })
 
     const focusDiv = (field_name: string) => {

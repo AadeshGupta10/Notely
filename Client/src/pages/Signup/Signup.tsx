@@ -8,6 +8,7 @@ import { check_email_duplicacy, signup } from '../../Services/API/api'
 import { Eye, EyeOff, LockKeyhole, Mail, UserRound } from 'lucide-react'
 import Form_error from '../../components/Error/Form_error'
 import Email_verification from '../../components/Email Verification/Email_verification'
+import { toast } from 'react-toastify'
 
 const Signup = () => {
 
@@ -33,6 +34,9 @@ const Signup = () => {
         mutationFn: check_email_duplicacy,
         onSuccess: () => {
             setOpenVerification(!openVerification)
+        },
+        onError: (err: { response: { data: string } }) => {
+            toast.error(err.response.data)
         }
     })
 

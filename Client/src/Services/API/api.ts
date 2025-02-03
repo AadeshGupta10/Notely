@@ -6,9 +6,9 @@ const signup = async (e: any) => {
     return await toast.promise(
         axios_instance.post("/signup", e),
         {
-            pending: 'Creating Account... Please Wait',
-            success: `Welcome ${e.name} to Your Notely World`,
-            error: "Account Creation Failed. Try Again Later."
+            pending: 'Creating account... Please wait',
+            success: `Welcome ${e.name} to Notely World`,
+            error: "Account creation failed. Try again later."
         }
     )
 }
@@ -18,9 +18,9 @@ const signin = async (e: any) => {
     return await toast.promise(
         axios_instance.post("/signin", e),
         {
-            pending: 'Verifying Credentials',
-            success: `Welcome Back Buddy`,
-            error: "Credentials Invalid"
+            pending: 'Verifying credentials',
+            success: `Welcome back buddy`,
+            error: "Your credentials are invalid"
         }
     )
 }
@@ -31,8 +31,8 @@ const email_otp = async (e: any) => {
         axios_instance.post("/email_otp", e),
         {
             pending: `Sending OTP on ${e.email}`,
-            success: `OTP is Sent on ${e.email}`,
-            error: "Network Error Occured, Try Again Later"
+            success: `OTP is sent on ${e.email}`,
+            error: "Network error cccured, Try again later"
         }
     )
 }
@@ -43,8 +43,8 @@ const email_otp_verification = async (e: object) => {
         axios_instance.post("/email_otp_verification", e),
         {
             pending: 'Verifying OTP',
-            success: 'OTP Verified Successfully',
-            error: "OTP Verification Failed"
+            success: 'OTP Verified successfully',
+            error: "OTP Verification failed"
         }
     )
 }
@@ -53,8 +53,8 @@ const check_email = async (e: any) => {
     return await toast.promise(
         axios_instance.post("/check_email", e),
         {
-            pending: `Checking Email.... Please Wait`,
-            error: "Email Invalid"
+            pending: `Checking email.... Please wait`,
+            error: "Email invalid"
         }
     )
 }
@@ -63,8 +63,7 @@ const check_email_duplicacy = async (e: any) => {
     return await toast.promise(
         axios_instance.post("/check_email_duplicacy", e),
         {
-            pending: `Checking Email.... Please Wait`,
-            error: "Email Already Registered"
+            pending: `Checking email.... Please wait`
         }
     )
 }
@@ -74,9 +73,9 @@ const create_new_password = async (e: object) => {
     return await toast.promise(
         axios_instance.post("/create_new_password", e),
         {
-            pending: 'Resetting Password.. Please Wait.',
-            success: 'Password Reset Successfully',
-            error: "Password Reset Failed"
+            pending: 'Resetting password.. Please wait.',
+            success: 'Password reset successfully',
+            error: "Password reset failed"
         }
     )
 }
@@ -86,9 +85,9 @@ const add_note = async (e: object) => {
     return await toast.promise(
         axios_instance.post("/dashboard/add_note", e),
         {
-            pending: 'Adding Note... Please Wait',
-            success: 'Note Added Successfully',
-            error: "Adding Note Failed."
+            pending: 'Adding note... Please wait',
+            success: 'Note added successfully',
+            error: "Adding note failed."
         }
     )
 }
@@ -98,9 +97,9 @@ const edit_note = async (e: object) => {
     return await toast.promise(
         axios_instance.post("/dashboard/edit_note", e),
         {
-            pending: 'Editing Note... Please Wait',
-            success: 'Note Edited Successfully',
-            error: "Editing Note Failed."
+            pending: 'Editing note... Please wait',
+            success: 'Note edited successfully',
+            error: "Editing note failed."
         }
     )
 }
@@ -110,9 +109,9 @@ const delete_note = async (e: object) => {
     return await toast.promise(
         axios_instance.post("/dashboard/delete_note", e),
         {
-            pending: 'Deleting Note... Please Wait',
-            success: 'Note Deleted Successfully',
-            error: "Deleting Note Failed."
+            pending: 'Deleting note... Please wait',
+            success: 'Note deleted successfully',
+            error: "Deleting note failed."
         }
     )
 }
@@ -124,9 +123,9 @@ const pin_unpin_note = async (e: any) => {
     return await toast.promise(
         axios_instance.post("/dashboard/pin_unpin_note", e),
         {
-            pending: `${status} Requested Note`,
-            success: `Note ${status} Successfully`,
-            error: `${status} Note Failed`
+            pending: `${status} requested note`,
+            success: `Note ${status} successfully`,
+            error: `${status} note failed`
         }
     )
 }
@@ -135,7 +134,7 @@ const verify_token = async () => {
     return await toast.promise(
         axios_instance.get("/dashboard/verify_token"),
         {
-            error: "Sorry, there is an error in finding your notes. Please Login Again."
+            error: "Session logout. Please login again"
         }
     )
 }
